@@ -8,3 +8,5 @@ Server/\.vs/TSD-TestGenerator/v16/Server/sqlite3/storage\.ide
 Server/\.vs/TSD-TestGenerator/DesignTimeBuild/\.dtbcache
 
 Server/TSD-TestGenerator/obj/
+
+Server/TSD-TestGenerator/bin/
