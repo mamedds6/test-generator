@@ -22,7 +22,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
                         // attributes: {}
                     },
                     {
-                        href: '/',
+                        href: '/home',
                         title: 'Home',
                         icon: 'fa fa-home',
                     },

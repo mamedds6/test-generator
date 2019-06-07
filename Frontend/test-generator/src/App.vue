@@ -1,20 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <Menu/>
+    <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 import Menu from './components/menu.vue'
 // import { SidebarMenu } from 'vue-sidebar-menu'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    // HelloWorld,
     Menu
     // SidebarMenu
   }
@@ -30,8 +31,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-</style>
-
-<style lang="scss" scoped>
-@import '../node_modules/vue-sidebar-menu/dist/vue-sidebar-menu.css'
 </style>
