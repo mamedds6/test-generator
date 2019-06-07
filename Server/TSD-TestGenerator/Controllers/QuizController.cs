@@ -1,17 +1,27 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using TSD_TestGenerator;
+using TSDTestGenerator.Database;
 
-namespace TSD_TestGenerator.Controllers
+namespace TSDTestGenerator.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly QuestionsDbContext _questionsDbContext;
+
+        ValuesController(QuestionsDbContext questionsDbContext)
+        {
+            _questionsDbContext = questionsDbContext;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Question>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _questionsDbContext.Questions;
         }
 
         // GET api/values/5
