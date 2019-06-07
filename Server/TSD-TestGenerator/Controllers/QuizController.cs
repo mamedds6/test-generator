@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using TSDTestGenerator.DTO;
 using TSDTestGenerator.Model;
 
 namespace TSDTestGenerator.Controllers
@@ -11,26 +13,32 @@ namespace TSDTestGenerator.Controllers
     {
         // GET api/quiz
         [HttpGet]
-        public ActionResult<IEnumerable<Question>> Get()
+        public ActionResult<IEnumerable<QuestionDto>> Get([FromQuery(Name = "number")] int? number)
         {
+            if (!number.HasValue)
+            {
+                number = 10;
+            }
             using (QuizDBContext quizDbContext = new QuizDBContext())
             {
-                return new Randomizer().getRandomQuestions(quizDbContext.Question.ToList(), 10);
+                List<Question> questions = quizDbContext.Question.ToList();
+                List<QuestionAnswer> questionAnswers = quizDbContext.QuestionAnswer.ToList();
+                List<Answer> answers = quizDbContext.Answer.ToList();
+                foreach (QuestionAnswer questionAnswer in questionAnswers)
+                {
+                    questionAnswer.Answer = answers.Find(answer => answer.Id == questionAnswer.AnswerId);
+                    questions.Find(question => question.Id == questionAnswer.QuestionId).QuestionAnswer.Add(questionAnswer);
+                }
+                return new Randomizer().getRandomQuestions(quizDbContext.Question.ToList(), number.Value).Select(q => new QuestionDto(q)).ToList();
             }
         }
 
-        //// GET api/values/5
-        //[HttpGet("{id}")]
-        //public ActionResult<string> Get(int id)
-        //{
-        //    return "value";
-        //}
+        // POST api/quiz/question
+        [HttpPost("question")]
+        public void Post([FromBody] Question question)
+        {
 
-        //// POST api/values
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        }
 
         //// PUT api/values/5
         //[HttpPut("{id}")]

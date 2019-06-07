@@ -6,4 +6,7 @@
   <PropertyGroup>
     <ActiveDebugProfile>TSD_TestGenerator</ActiveDebugProfile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
 </Project>
