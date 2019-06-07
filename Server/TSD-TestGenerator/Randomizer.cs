@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using TSD_TestGenerator;
-using TSDTestGenerator.Database;
 using System;
-
+using TSDTestGenerator.Model;
 
 
 namespace TSDTestGenerator.Controllers

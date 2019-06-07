@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using TSDTestGenerator.Model;
 
@@ -8,13 +9,14 @@ namespace TSDTestGenerator.Controllers
     [ApiController]
     public class QuizController : ControllerBase
     {
-        // GET api/values
-        [Route("/")]
+        // GET api/quiz
         [HttpGet]
         public ActionResult<IEnumerable<Question>> Get()
         {
-            return Ok();
-            //return new Randomizer().getRandomQuestions(_questionsDbContext.Questions.ToList(), 10);
+            using (QuizDBContext quizDbContext = new QuizDBContext())
+            {
+                return new Randomizer().getRandomQuestions(quizDbContext.Question.ToList(), 10);
+            }
         }
 
         //// GET api/values/5
