@@ -10,3 +10,7 @@ Server/\.vs/TSD-TestGenerator/DesignTimeBuild/\.dtbcache
 Server/TSD-TestGenerator/obj/
 
 Server/TSD-TestGenerator/bin/
+
+Server/\.vs/TSD-TestGenerator/v16/Server/sqlite3/storage\.ide-shm
+
+Server/\.vs/TSD-TestGenerator/v16/Server/sqlite3/storage\.ide-wal
