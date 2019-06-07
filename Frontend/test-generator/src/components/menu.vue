@@ -52,7 +52,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
                         */
                     },
                     {
-                        href: '/',
+                        href: '/listofquestions',
                         title: 'List of Questions',
                         icon: 'fa fa-list',
                         // icon: 'fa fa-chart-area',
@@ -64,7 +64,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
                         // ]
                     },
                     {
-                        href: '/',
+                        href: '/createquiz',
                         title: 'Create Quiz',
                         icon: 'fa fa-scroll',
                     }

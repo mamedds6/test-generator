@@ -2,16 +2,21 @@
 <div>
     <h2>Question statement</h2> 
     <textarea v-model="question" placeholder="Write the question statement here..."></textarea>
-    <h2>Alternatives</h2>  
-    <input type="radio" id="one" value="One" v-model="picked">
-    <textarea v-model="x" placeholder="Write the first alternative here..."></textarea>
+    <h2>Alternatives: {{index}}</h2>
+    <button v-on:click="plus">+</button>
+    <button v-on:click="minus">-</button>
     <br>
-    <input type="radio" id="two" value="Two" v-model="picked">
-    <textarea v-model="d" placeholder="Write the first alternative here..."></textarea>
+    <template v-for="n in index">
+        <h4>{{n}}</h4>
+        <textarea v-model="alternatives[n-1]" placeholder="Write the first alternative here..."></textarea>
+        <br>
+    </template>
 
-
-
-
+    <p>Correct index</p>
+    <input v-model="correctIndex" placeholder="Ex: 1">
+    <br>
+    <br>
+    <button v-on:click="add">Add</button>
 
 </div>
 </template>
@@ -29,20 +34,34 @@
         data() {
             return {
                 message: '',
-                index: 0,
-                picked: ''
+                alternatives: ['',''],
+                index: 2,
+                correctIndex: ''
             }
         },
         methods:
         {
-            add(index) {
-                this.inputs.push({ name: '' });
-                index+=1;
-                index-=1;
+            plus: function ()
+            {
+                this.index += 1;
+                this.alternatives.push('')
             },
-            remove(index) {
-                this.inputs.splice(index, 1);
+            minus: function ()
+            {
+                if(this.index > 2)
+                {
+                    this.alternatives.pop()
+                    this.index -= 1;
+                }
+            },
+            add: function()
+            {
+                if(!isNaN(this.correctIndex) && this.correctIndex > 0 && this.correctIndex <= this.index)
+                    alert("VALID")
+                else
+                    alert("NOT VALID")
             }
+            
         }
     }
 </script>
