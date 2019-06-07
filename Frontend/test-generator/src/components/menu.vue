@@ -27,7 +27,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
                         icon: 'fa fa-home',
                     },
                     {
-                        href: '/',
+                        href: '/addquestion',
                         title: 'Add Question',
                         icon: 'fa fa-plus',
                         /* 
