@@ -4,6 +4,7 @@ import VueSidebarMenu from 'vue-sidebar-menu'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import VueRouter from 'vue-router'
 import Home from './components/home.vue'
+import AddQuestion from './components/addquestion.vue'
 
 Vue.config.productionTip = false
 Vue.use(VueSidebarMenu)
@@ -16,11 +17,11 @@ const router = new VueRouter({
       name: 'Home',
       component: Home
     },
-    // {
-    //   path: '/addquestion',
-    //   name: 'AddQuestion',
-    //   component: AddQuestion
-    // },
+    {
+      path: '/addquestion',
+      name: 'AddQuestion',
+      component: AddQuestion
+    },
     // {
     //   path: '/questions',
     //   name: 'Questions',
