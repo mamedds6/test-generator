@@ -1,27 +1,26 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using TSD_TestGenerator;
-using TSDTestGenerator.Database;
+using TSDTestGenerator.DTO;
+using TSDTestGenerator.Model;
 
 namespace TSDTestGenerator.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class QuizController : ControllerBase
     {
-        private readonly QuestionsDbContext _questionsDbContext;
-
-        ValuesController(QuestionsDbContext questionsDbContext)
-        {
-            _questionsDbContext = questionsDbContext;
-        }
-
         // GET api/values
+        [Route("/")]
         [HttpGet]
-        public ActionResult<IEnumerable<Question>> Get()
+        public ActionResult<QuestionDto> Get()
         {
-            return _questionsDbContext.Questions;
+            using (var quizDbContext = new QuizDBContext())
+            {
+//                quizDbContext.Question.Add(new Question() {Content = "YYY"});
+//                quizDbContext.SaveChanges();
+//                return Json(new QuestionDto(quizDbContext.Question.First()));
+                return Ok(new QuestionDto(new Question(){Id = 10, Content = "XXX"}));
+            }
         }
 
         // GET api/values/5

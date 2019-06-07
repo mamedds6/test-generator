@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using TSDTestGenerator.Database;
 
-namespace TSD_TestGenerator
+namespace TSDTestGenerator
 {
     public class Program
     {
-        public static QuestionsDbContext QuestionsDbContext;
-
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
