@@ -19,7 +19,7 @@ namespace TSDTestGenerator.Controllers
             {
                 List<Category> categories = new List<Category>();
                 if (name != null)
-                    categories = (System.Collections.Generic.List<TSDTestGenerator.Model.Category>)quizDbContext.Category.ToList().Where(b => b.Name == name);
+                    categories = (List<Category>)quizDbContext.Category.ToList().Where(b => b.Name == name);
                 else
                     categories = quizDbContext.Category.ToList();
 
