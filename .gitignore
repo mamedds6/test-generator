@@ -41,3 +41,4 @@ Server/TestGenaratorTest/obj/
 Server/TestGenaratorTest/bin/
 
 Server/\.vs/TSD-TestGenerator/config/applicationhost\.config
+.DS_Store

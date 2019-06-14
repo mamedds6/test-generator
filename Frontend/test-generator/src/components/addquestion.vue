@@ -137,6 +137,8 @@
             {
                 var send = {};
                 send.content = this.message;
+                send.difficulty = this.selected;
+            
                 var msgs = [];
                 var i = 0;
                 this.alternatives.forEach(element => {
@@ -195,14 +197,12 @@
                 })
 
                 axios
-                // .post('http://10.160.47.210:5001/api/quiz/question',{ data: send } )
-                .post('http://195.80.130.120:9000/api/quiz/question', {data: send})
+                .post('http://10.160.47.210:5001/api/quiz/question', send )
+                // .post('http://195.80.130.120:9000/api/quiz/question', {data: send})
                 .then(
                     response =>
                     {
-                        console.log(response);
-                        console.log(this.message);
-                        alert(response);
+                        alert("SAVED")
                     }
                 )
                 // .catch(function (error) {
