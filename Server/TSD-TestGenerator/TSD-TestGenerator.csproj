@@ -16,4 +16,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove=":Users:filip:Projects:test-generator:Server:TSD-TestGenerator:Controllers:CategoryController.cs" />
+    <Compile Remove=":Users:filip:Projects:test-generator:Server:TSD-TestGenerator:Controllers:CategoriesController.cs" />
+  </ItemGroup>
 </Project>
