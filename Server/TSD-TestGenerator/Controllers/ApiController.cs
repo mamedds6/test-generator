@@ -67,6 +67,34 @@ namespace TSD_TestGenerator.Controllers
                 ReturnObjectFields = null,
                 ExampleResponsetData = null,
                 OptionalParameters = null
+            },
+            new ApiEndpoint
+            {
+                Url = "api/categories",
+                Description = "Get all categories or all questions in category (provide a name)",
+                HttpRequestType = ApiEndpoint.GET,
+                RequestObjectFields = null,
+                ExampleRequestData = null,
+                ReturnObjectFields = new List<string>
+                {
+                    "name"
+                },
+                ExampleResponsetData = "[{\"name\":\"First category\"},{\"content\":\"Second category\"}]",
+                OptionalParameters = null,
+            },
+            new ApiEndpoint
+            {
+                Url = "api/categories/add",
+                Description = "Add question",
+                HttpRequestType = ApiEndpoint.POST,
+                RequestObjectFields = new List<string>
+                {
+                    "content"
+                },
+                ExampleRequestData = "[{\"name\":\"First category\"}]",
+                ReturnObjectFields = null,
+                ExampleResponsetData = null,
+                OptionalParameters = null
             }
         };
 
