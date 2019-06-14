@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TSDTestGenerator.DTO;
 using TSDTestGenerator.Model;
+using TSDTestGenerator.Controllers;
 
 namespace TSDTestGenerator.Controllers
 {
