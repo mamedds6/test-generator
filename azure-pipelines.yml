@@ -9,7 +9,7 @@
 
 
 pool:
-  vmImage: 'windows-latest'
+  -vmImage: 'windows-latest'
 
 variables:
   solution: '**/Server/*.sln'
