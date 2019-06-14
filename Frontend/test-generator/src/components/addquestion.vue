@@ -84,6 +84,8 @@
 
 <script>
     import axios from 'axios';
+    import VueFetch from 'vue-fetch'
+    import Vue from 'vue'
 
     export default {
         name: 'AddQuestions',
@@ -154,13 +156,47 @@
                 send.answers = msgs;
                 console.log(send);
                 
+                Vue.use(VueFetch, {
+                polyfill: true   //should vue-fetch load promise polyfill, set to false to use customer polyfill
+                });
+
                 console.log(JSON.stringify(send));
+                const vm = new Vue({
+                });
+                (async function(){
+                let login = await vm.$fetch.post('http://10.160.47.210:5001/api/quiz/question', send);
+                if (login.status != 200) {
+                    alert('login error');
+                }
+
+                else
+                {
+                    alert("something");
+                }
+                // if (user.status != 200){
+                //     alert('can not get profile')
+                // }
+            })()
 
                 axios.defaults.crossDomain = true;
                 axios.defaults.preflightContinue = true;
 
+                axios("http://10.160.47.210:5001/api/quiz/question", {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                },
+                withCredentials: true,
+                credentials: 'same-origin',
+                }).then(response => {
+                    console.log(response);
+                })
+
                 axios
-                .post('http://10.160.47.210:5001/api/quiz/question', send)
+                // .post('http://10.160.47.210:5001/api/quiz/question',{ data: send } )
+                .post('http://195.80.130.120:9000/api/quiz/question', {data: send})
                 .then(
                     response =>
                     {
@@ -169,9 +205,9 @@
                         alert(response);
                     }
                 )
-                .catch(function (error) {
-                    console.log(error);
-                });
+                // .catch(function (error) {
+                //     console.log(error);
+                // });
             },
             
         }
