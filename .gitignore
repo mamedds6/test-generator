@@ -39,3 +39,5 @@ Server/\.vs/TSD-TestGenerator/v15/Server/sqlite3/storage\.ide-shm
 Server/TestGenaratorTest/obj/
 
 Server/TestGenaratorTest/bin/
+
+Server/\.vs/TSD-TestGenerator/config/applicationhost\.config

@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace TSDTestGenerator.Model
 {
@@ -8,6 +7,7 @@ namespace TSDTestGenerator.Model
     {
         public QuizDBContext()
         {
+            ReassignData();
         }
 
         public QuizDBContext(DbContextOptions<QuizDBContext> options)
@@ -15,6 +15,23 @@ namespace TSDTestGenerator.Model
         {
         }
 
+        public void ReassignData()
+        {
+            foreach (QuestionAnswer questionAnswer in QuestionAnswer)
+            {
+                questionAnswer.Answer = Answer.ToList().Find(answer => answer.Id == questionAnswer.AnswerId);
+                Question question = Question.ToList().Find(q => q.Id == questionAnswer.QuestionId);
+                question.QuestionAnswer.Add(questionAnswer);
+                questionAnswer.Question = question;
+            }
+
+            foreach (Question question in Question)
+            {
+                Category category = Category.ToList().Find(c => c.Id == question.CategoryId);
+                category.Question.Add(question);
+                question.Category = category;
+            }
+        }
         public virtual DbSet<Answer> Answer { get; set; }
         public virtual DbSet<Question> Question { get; set; }
         public virtual DbSet<QuestionAnswer> QuestionAnswer { get; set; }

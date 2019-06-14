@@ -1,8 +1,6 @@
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TSDTestGenerator.Model;
 
 namespace TSDTestGenerator.DTO
@@ -10,7 +8,9 @@ namespace TSDTestGenerator.DTO
     public class QuestionDto
     {
         public string Content { get; set; }
-        public string Difficulty { get; set; }
+        //public string Difficulty { get; set; }
+
+        //public string Category { get; set; }
         public ICollection<AnswerDto> Answers { get; set; }
 
 
@@ -23,7 +23,8 @@ namespace TSDTestGenerator.DTO
         {
             Content = question.Content;
             Answers = question.QuestionAnswer.Select(qe => new AnswerDto(qe)).ToList();
-            Difficulty = question.Difficulty == 0 ? "Easy" : question.Difficulty == 1 ? "Medium" : "Hard";
+//            Difficulty = question.Difficulty == 0 ? "Easy" : question.Difficulty == 1 ? "Medium" : "Hard";
+//            Category = question.Category.Name;
         }
 
         [JsonIgnore]
