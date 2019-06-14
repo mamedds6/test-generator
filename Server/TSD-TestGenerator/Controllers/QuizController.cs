@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TSDTestGenerator.DTO;
@@ -13,7 +14,11 @@ namespace TSDTestGenerator.Controllers
     {
         // GET api/quiz
         [HttpGet]
-        public ActionResult<IEnumerable<QuestionDto>> Get([FromQuery(Name = "number")] int? number)
+        public ActionResult<IEnumerable<QuestionDto>> Get([FromQuery(Name = "number")] int? number,
+            [FromQuery(Name = "easyNumber")] int? easyNumber,
+            [FromQuery(Name = "mediumNumber")] int? mediumNumber,
+            [FromQuery(Name = "hardNumber")] int? hardNumber,
+            [FromQuery(Name = "category")] string category)
         {
             if (!number.HasValue)
             {
@@ -25,15 +30,16 @@ namespace TSDTestGenerator.Controllers
             }
         }
 
-        // POST api/quiz/question
-        [HttpPost("question2")]
-        public ActionResult Post([FromBody] string questionDto)
+        [HttpOptions("question")]
+        [EnableCors("MyPolicy")]
+        public ActionResult Options()
         {
-            return Ok(questionDto);
+            return Ok();
         }
 
         // POST api/quiz/question
         [HttpPost("question")]
+        [EnableCors("MyPolicy")]
         public ActionResult Post([FromBody] QuestionDto questionDto)
         {
             if(questionDto == null)
@@ -123,12 +129,6 @@ namespace TSDTestGenerator.Controllers
 
             return Ok();
         }
-
-        //// PUT api/values/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
 
         //// DELETE api/values/5
         //[HttpDelete("{id}")]
