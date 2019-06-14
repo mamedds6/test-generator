@@ -3,34 +3,45 @@
 <div>
     <h2>Test name</h2>
     
-<b-container fluid>
-  <b-row class="mc-1">
-    <b-col sm="3">
-    </b-col>
-    <b-col sm="8">
-      <b-form-textarea id="textarea" v-model="message" placeholder="Write the name of the test here..." rows="1" max-rows="6" ></b-form-textarea>
-    </b-col>
-    <b-col sm="3">
-    </b-col>
-  </b-row>
-</b-container>
-
-<br>
-<h2>Number of questions</h2>
-<b-container fluid>
-    <b-row class="mc-2"><!-- v-for="type in types" :key="type">
--->     <b-col sm="3">
-        </b-col>
+    <b-container fluid>
+    <b-row class="mc-1">
         <b-col sm="3">
-            <label>number of *level* questions</label>
         </b-col>
-            <b-col sm="5">
-            <b-form-input :id="type-number" :type="number"></b-form-input>
+        <b-col sm="8">
+        <b-form-textarea id="textarea" v-model="message" placeholder="Write the name of the test here..." rows="1" max-rows="6" ></b-form-textarea>
         </b-col>
         <b-col sm="3">
         </b-col>
     </b-row>
-</b-container>
+    </b-container>
+
+    <br>
+    <h2>Number of questions</h2>
+    <b-container fluid>
+        <b-row class="mc-2" v-for="type in types" :key="type">
+        <b-col sm="3">
+            </b-col>
+            <b-col sm="3">
+                <label> {{type.type}} questions</label>
+            </b-col>
+                <b-col sm="5">
+                <b-form-input :id="type-number" :type="number"></b-form-input>
+            </b-col>
+            <b-col sm="3">
+            </b-col>
+        </b-row>
+    </b-container>
+
+    <br>
+    <b-button-group class="mc-3">
+    <b-button variant="success" v-on:click="generate">Generate Test</b-button>
+
+    </b-button-group>
+    <b-button-group class="mc-3">
+    <b-button variant="danger" v-on:click="reset">Reset</b-button>
+
+    </b-button-group>
+    
 
 </div>
 </template>
@@ -45,10 +56,19 @@
         },
         data() {
             return {
-                
+                types: [
+                    {type:'Easy'},
+                    {type:'Medium'}, 
+                    {type:'Hard'}
+                ]                
             }
         },
         methods:{
+            reset: function ()
+            {
+                
+            },
+
                 save: function ()
             {            
                 axios
