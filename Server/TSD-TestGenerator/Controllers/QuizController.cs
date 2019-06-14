@@ -21,32 +21,46 @@ namespace TSDTestGenerator.Controllers
             }
             using (QuizDBContext quizDbContext = new QuizDBContext())
             {
-                List<Question> questions = quizDbContext.Question.ToList();
-                List<QuestionAnswer> questionAnswers = quizDbContext.QuestionAnswer.ToList();
-                List<Answer> answers = quizDbContext.Answer.ToList();
-                foreach (QuestionAnswer questionAnswer in questionAnswers)
-                {
-                    questionAnswer.Answer = answers.Find(answer => answer.Id == questionAnswer.AnswerId);
-                    questions.Find(question => question.Id == questionAnswer.QuestionId).QuestionAnswer.Add(questionAnswer);
-                }
                 return new Randomizer().getRandomQuestions(quizDbContext.Question.ToList(), number.Value).Select(q => new QuestionDto(q)).ToList();
             }
+        }
+
+        // POST api/quiz/question
+        [HttpPost("question2")]
+        public ActionResult Post([FromBody] string questionDto)
+        {
+            return Ok(questionDto);
         }
 
         // POST api/quiz/question
         [HttpPost("question")]
         public ActionResult Post([FromBody] QuestionDto questionDto)
         {
-            if(questionDto == null || questionDto.Answers == null || questionDto.Answers.Count <= 0 || string.IsNullOrEmpty(questionDto.Content))
+            if(questionDto == null)
             {
-                return BadRequest();
+                return BadRequest("question is null");
+            }
+
+            if(questionDto.Answers == null)
+            {
+                return BadRequest("answers are null");
+            }
+
+            if(questionDto.Answers.Count <= 0)
+            {
+                return BadRequest("answers count is 0");
+            }
+
+            if(string.IsNullOrEmpty(questionDto.Content))
+            {
+                return BadRequest("question has no content");
             }
 
             foreach(AnswerDto answer in questionDto.Answers)
             {
                 if (string.IsNullOrEmpty(answer.Content))
                 {
-                    return BadRequest();
+                    return BadRequest("answer has no content");
                 }
             }
 
@@ -60,12 +74,31 @@ namespace TSDTestGenerator.Controllers
 
                 question.QuestionAnswer = new List<QuestionAnswer>();
 
+                question.CategoryId = 0;
+
                 quizDbContext.Question.Add(question);
 
                 
 
-                int newQuestionAnswerId = quizDbContext.QuestionAnswer.Max(q => q.Id) + 1;
-                int newAnswerId = quizDbContext.Answer.Max(q => q.Id) + 1;
+                int newQuestionAnswerId;
+                if (quizDbContext.QuestionAnswer.Count() != 0)
+                {
+                    newQuestionAnswerId = quizDbContext.QuestionAnswer.Max(q => q.Id) + 1;
+                }
+                else
+                {
+                    newQuestionAnswerId = 0;
+                }
+
+                int newAnswerId;
+                if (quizDbContext.Answer.Count() != 0)
+                {
+                    newAnswerId = quizDbContext.Answer.Max(q => q.Id) + 1;
+                }
+                else
+                {
+                    newAnswerId = 0;
+                }
 
                 foreach (QuestionAnswer questionAnswer in questionAnswers)
                 {
