@@ -12,7 +12,10 @@ namespace TSDTestGenerator.Model
 
         public int Id { get; set; }
         public string Content { get; set; }
+        public int Difficulty { get; set; }
+        public int CategoryId { get; set; }
 
         public ICollection<QuestionAnswer> QuestionAnswer { get; set; }
+        public Category Category { get; set; }
     }
 }
