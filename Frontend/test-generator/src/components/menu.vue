@@ -68,7 +68,6 @@ import '@fortawesome/fontawesome-free/css/all.css'
                         title: 'Create Quiz',
                         icon: 'fa fa-scroll',
                     }
-
                 ]
             }
         }

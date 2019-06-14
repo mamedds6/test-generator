@@ -5,6 +5,7 @@ import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import VueRouter from 'vue-router'
 import Home from './components/home.vue'
 import AddQuestion from './components/addquestion.vue'
+import CreateQuiz from './components/createquiz.vue'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -31,11 +32,11 @@ const router = new VueRouter({
     //   name: 'Questions',
     //   component: Questions
     // },
-    // {
-    //   path: '/createquiz',
-    //   name: 'CreateQuiz',
-    //   component: CreateQuiz
-    // },
+    {
+      path: '/createquiz',
+      name: 'CreateQuiz',
+      component: CreateQuiz
+    },
   ]
 })
 

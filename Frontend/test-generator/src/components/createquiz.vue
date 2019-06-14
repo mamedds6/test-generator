@@ -1,9 +1,15 @@
 
 <template>
-<div>
-<h1>Quiz Generator</h1>
-<p>Members Daniel Craviée, Piotr Górny, Darek Michalski, Arkadiusz Sielecki, Filip Szymański</p>
-</div>
+<b-container fluid>
+    <b-row class="my-1" v-for="type in types" :key="type">
+        <b-col sm="3">
+            <label>Type Number:</label>
+        </b-col>
+        <b-col sm="9">
+            <b-form-input :id="type-number" :type="number"></b-form-input>
+        </b-col>
+    </b-row>
+</b-container>
 </template>
 
 <script>

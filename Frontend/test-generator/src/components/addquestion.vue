@@ -7,7 +7,7 @@
     <b-col sm="3">
     </b-col>
     <b-col sm="8">
-      <b-form-textarea id="textarea" v-model="question" placeholder="Write the question statement here..." rows="1" max-rows="6" ></b-form-textarea>
+      <b-form-textarea id="textarea" v-model="message" placeholder="Write the question statement here..." rows="1" max-rows="6" ></b-form-textarea>
     </b-col>
     <b-col sm="3">
     </b-col>
@@ -54,12 +54,28 @@
 
     <b-button pill variant="primary" v-on:click="plus">+</b-button>
         
-
+<br>
     <br>
+    <h2>Difficulty</h2>
+    <b-form-group>
+      <b-form-radio-group
+        id="btn-radios-1"
+        v-model="selected"
+        :options="['Easy','Medium','Hard']"
+        buttons
+        name="radios-btn-default"
+      ></b-form-radio-group>
+    </b-form-group>
     <br>
     
-
+    <b-button-group class="mx-1">
     <b-button variant="success" v-on:click="save">Save</b-button>
+
+    </b-button-group>
+    <b-button-group class="mx-1">
+    <b-button variant="danger" v-on:click="reset">Reset</b-button>
+
+    </b-button-group>
     
     
 
@@ -67,6 +83,8 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         name: 'AddQuestions',
         inputs:
@@ -81,7 +99,8 @@
                 message: '',
                 alternatives: ['',''],
                 index: 2,
-                picked: 1
+                picked: 1,
+                selected: 'Easy'
             }
         },
         methods:
@@ -104,9 +123,24 @@
                     this.index -= 1;
                 }
             },
+            reset: function ()
+            {
+                this.message = '';
+                this.alternatives = ['',''];
+                this.index = 2;
+                this.picked = 1;
+                this.selected = 'Easy';
+            },
             save: function ()
             {
-                alert("save")
+                axios
+                .get('https://swapi.co/api/people/1')
+                .then(
+                    response =>
+                    {
+                        alert(response.data.name);
+                    }
+                );
             },
             
         }
