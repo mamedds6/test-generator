@@ -56,6 +56,7 @@
         
 <br>
     <br>
+    {{selected}}
     <h2>Difficulty</h2>
     <b-form-group>
       <b-form-radio-group
@@ -138,6 +139,7 @@
                 var send = {};
                 send.content = this.message;
                 send.difficulty = this.selected;
+            
                 var msgs = [];
                 var i = 0;
                 this.alternatives.forEach(element => {
