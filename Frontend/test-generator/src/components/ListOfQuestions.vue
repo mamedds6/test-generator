@@ -36,7 +36,7 @@ import axios from 'axios';
             getData: function()
             {
                 axios
-                .get('http://10.160.47.210:5001/api/quiz/')
+                .get('http://10.160.47.210:5001/api/quiz/all')
                 // .get('http://195.80.130.120:9000/api/quiz/')
                 .then(
                     response =>
@@ -62,7 +62,7 @@ import axios from 'axios';
                                 questions[i]["Answer" + j] = element.content; 
                                 j++;
                             });
-                            questions[i].Correct = correctOne;
+                            // questions[i].Correct = correctOne;
                             questions[i]._cellVariants = {};
                             questions[i]._cellVariants["Answer" + correctOne] = 'info';
                             correctOne = "";

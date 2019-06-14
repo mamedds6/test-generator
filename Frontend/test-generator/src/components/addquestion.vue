@@ -195,8 +195,8 @@
                 })
 
                 axios
-                // .post('http://10.160.47.210:5001/api/quiz/question',{ data: send } )
-                .post('http://195.80.130.120:9000/api/quiz/question', {data: send})
+                .post('http://10.160.47.210:5001/api/quiz/question', send )
+                // .post('http://195.80.130.120:9000/api/quiz/question', {data: send})
                 .then(
                     response =>
                     {
