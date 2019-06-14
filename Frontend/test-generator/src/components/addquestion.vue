@@ -153,19 +153,25 @@
                 });
                 send.answers = msgs;
                 console.log(send);
+                
+                console.log(JSON.stringify(send));
+
+                axios.defaults.crossDomain = true;
+                axios.defaults.preflightContinue = true;
+
                 axios
-                .post('http://10.160.47.210:5001/api/quiz', 
-                {
-                    content: this.message,
-                    answers: msgs
-                })
+                .post('http://10.160.47.210:5001/api/quiz/question', send)
                 .then(
                     response =>
                     {
+                        console.log(response);
                         console.log(this.message);
                         alert(response);
                     }
-                );
+                )
+                .catch(function (error) {
+                    console.log(error);
+                });
             },
             
         }
