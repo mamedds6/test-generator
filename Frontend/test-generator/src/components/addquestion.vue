@@ -56,7 +56,6 @@
         
 <br>
     <br>
-    {{selected}}
     <h2>Difficulty</h2>
     <b-form-group>
       <b-form-radio-group
