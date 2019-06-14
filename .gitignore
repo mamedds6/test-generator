@@ -34,3 +34,8 @@ Server/\.vs/TSD-TestGenerator/v15/Server/sqlite3/storage\.ide
 Server/\.vs/TSD-TestGenerator/v15/Server/sqlite3/storage\.ide-wal
 
 Server/\.vs/TSD-TestGenerator/v15/Server/sqlite3/storage\.ide-shm
+.DS_Store
+
+Server/TestGenaratorTest/obj/
+
+Server/TestGenaratorTest/bin/
