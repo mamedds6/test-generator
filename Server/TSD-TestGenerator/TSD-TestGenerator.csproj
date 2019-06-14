@@ -7,16 +7,18 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
-    <Folder Include="Utilities\" />
     <Folder Include="Assets\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Codaxy.WkHtmlToPdf" Version="0.5.8" />
+    <PackageReference Include="DinkToPdf" Version="1.0.8" />
     <PackageReference Include="EntityFramework" Version="6.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
-    <PackageReference Include="DinkToPdf" Version="1.0.8" />
+    <PackageReference Include="Select.HtmlToPdf" Version="19.1.0" />
+    <PackageReference Include="Select.Pdf.NetCore" Version="19.1.0" />
   </ItemGroup>
 
   <ItemGroup>

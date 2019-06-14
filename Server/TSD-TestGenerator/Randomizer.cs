@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System;
 using TSDTestGenerator.Model;
 
@@ -16,17 +15,22 @@ namespace TSDTestGenerator.Controllers
         public List<Question> getRandomQuestions(List<Question> allQuestions, int numberOfQuestions)
         {
             Random rand = new Random();
-            List<Question> randomQuestions = allQuestions
-                .Where(b => (Enumerable
-                .Repeat(0, numberOfQuestions)
-                .Select(i => rand.Next(0, allQuestions.Count()))
-                .ToArray())
-                .Contains(b.Id)).ToList();
+            List<Question> questions = new List<Question>();
+            if (allQuestions.Count <= numberOfQuestions)
+            {
+                return allQuestions;
+            }
 
-            return randomQuestions;
+            while (questions.Count < numberOfQuestions)
+            {
+                Question question = allQuestions[rand.Next(0, allQuestions.Count)];
+                if (!questions.Contains(question))
+                {
+                    questions.Add(question);
+                }
+            }
+
+            return questions;
         }
-
-
-
     }
 }

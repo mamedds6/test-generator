@@ -14,21 +14,22 @@ namespace TSDTestGenerator.Utilities
                             <head>
                             </head>
                             <body>
-                                <div class='header'><h1>This is the generated PDF report!!!</h1></div>
-                                <table align='center'>
-                                    <tr>
-                                        <th>Name</th>
-                                    </tr>");
+                            <ol type=''1''>");
 
             foreach (var question in questions)
             {
-                sb.AppendFormat(@"<tr>
-                                    <td>{0}</td>
-                                  </tr>", question.Content);
+                sb.AppendFormat(@"<li>{0}</li>", question.Content);
+                sb.Append(@"<ol type=''A''>");
+                foreach (QuestionAnswer questionAnswer in question.QuestionAnswer)
+                {
+                    sb.AppendFormat(@"<li>{0}</li>", questionAnswer.Answer.Content);
+                }
+
+                sb.Append("</ol>");
             }
 
             sb.Append(@"
-                                </table>
+                                </ol>
                             </body>
                         </html>");
 

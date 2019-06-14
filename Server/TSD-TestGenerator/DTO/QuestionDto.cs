@@ -32,6 +32,7 @@ namespace TSDTestGenerator.DTO
         {
             Content = Content,
             Id = 0,
+            Difficulty = Difficulty.Equals("Easy") ? 0 : Difficulty.Equals("Medium") ? 1 : 2,
             QuestionAnswer = Answers.Select(answer => answer.QuestionAnswer).ToList()
         };
     }
