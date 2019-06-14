@@ -63,6 +63,7 @@ import axios from 'axios';
                                 j++;
                             });
                             // questions[i].Correct = correctOne;
+                            questions[i].Difficulty = Q.difficulty;
                             questions[i]._cellVariants = {};
                             questions[i]._cellVariants["Answer" + correctOne] = 'info';
                             correctOne = "";

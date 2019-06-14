@@ -137,6 +137,7 @@
             {
                 var send = {};
                 send.content = this.message;
+                send.difficulty = this.selected;
                 var msgs = [];
                 var i = 0;
                 this.alternatives.forEach(element => {
@@ -200,9 +201,7 @@
                 .then(
                     response =>
                     {
-                        console.log(response);
-                        console.log(this.message);
-                        alert(response);
+                        alert("SAVED")
                     }
                 )
                 // .catch(function (error) {
