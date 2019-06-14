@@ -133,12 +133,37 @@
             },
             save: function ()
             {
+                var send = {};
+                send.content = this.message;
+                var msgs = [];
+                var i = 0;
+                this.alternatives.forEach(element => {
+                    var aux = {};
+                    aux.content = element;
+                    if(this.picked == i+1)
+                    {
+                        aux.isCorrect = true;
+                    }
+                    else
+                    {
+                        aux.isCorrect = false;    
+                    }
+                    msgs.push(aux);
+                    i++;
+                });
+                send.answers = msgs;
+                console.log(send);
                 axios
-                .get('https://swapi.co/api/people/1')
+                .post('http://10.160.47.210:5001/api/quiz', 
+                {
+                    content: this.message,
+                    answers: msgs
+                })
                 .then(
                     response =>
                     {
-                        alert(response.data.name);
+                        console.log(this.message);
+                        alert(response);
                     }
                 );
             },
