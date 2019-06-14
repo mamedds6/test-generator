@@ -42,6 +42,10 @@
 
     </b-button-group>
     
+    <br>
+    <label> -- Test --  {{questions}} </label>
+    
+
 
 </div>
 </template>
@@ -60,7 +64,10 @@
                     {type:'Easy'},
                     {type:'Medium'}, 
                     {type:'Hard'}
-                ]                
+                ],
+                message: '',
+                questions:"ops",
+                                
             }
         },
         methods:{
@@ -69,16 +76,20 @@
                 
             },
 
-                save: function ()
+            generate: function ()
             {            
                 axios
                 .get('https://swapi.co/api/people/1')
                 .then(
                     response =>
                     {
-                        alert(response.data.name);
+                        alert(response.data.name); //test generated
+                        this.questions = response.data.name;
                     }
-                );
+                )
+                    .catch(function (error) {
+                    console.log(error);
+                });
             },            
         }
     }

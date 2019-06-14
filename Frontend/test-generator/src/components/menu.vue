@@ -52,7 +52,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
                         */
                     },
                     {
-                        href: '/listofquestions',
+                        href: '/questions',
                         title: 'List of Questions',
                         icon: 'fa fa-list',
                         // icon: 'fa fa-chart-area',

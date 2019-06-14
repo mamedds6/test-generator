@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using TSDTestGenerator.DTO;
 using TSDTestGenerator.Model;
+using TSDTestGenerator.Controllers;
 
 namespace TSDTestGenerator.Controllers
 {

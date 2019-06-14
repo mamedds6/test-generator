@@ -25,10 +25,15 @@ namespace TSDTestGenerator.Controllers
         [HttpPost("add")]
         public ActionResult Post([FromBody] Category category)
         {
-            if (category == null || string.IsNullOrEmpty(category.Name))
+            if (category == null)
             {
-                return BadRequest();
+                return BadRequest("category is null");
             }
+            else if (string.IsNullOrEmpty(category.Name))
+            {
+                return BadRequest("category name is null");
+            }   
+
 
             using (QuizDBContext quizDbContext = new QuizDBContext())
             {
