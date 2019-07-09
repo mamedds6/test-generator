@@ -4,7 +4,7 @@ Project: Test Generator
 
 Members: Daniel Craviee, Arkadiusz Sielecki, Piotr Górny, Dariusz Michalski, Filip Szymański
 
-Tools needed: Visual Studio, npm, ...
+Tools needed: Visual Studio, npm
 
 Tests: written in and run from within Viusal Studio
 
